@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public class PawController : MonoBehaviour
 {
-
-    [SerializeField]
-    private float hesitationPeriod = 0.5f;
     [SerializeField]
     private LineRenderer lineRenderer;
     [SerializeField]
@@ -17,50 +14,126 @@ public class PawController : MonoBehaviour
     private AnimationCurve pawSpeed;
     [SerializeField]
     private float pawSpeedMultiplier;
+    [SerializeField]
+    private float maxDistance;
 
-    private float timer;
+	[SerializeField]
+	private float normalHitDelay;
+	[SerializeField]
+	private float bonusHitDelay;
+	[SerializeField]
+    private float recordDistanceDelay;
+
+    private float normalHitTimer = 0;
+    private float bonusHitTimer = 0;
+    private float recordDistanceTimer = 0;
+
     private Vector2 targetPos;
     private Vector2 pawStartPos;
-    private List<Vector2> posList = new List<Vector2>();
-    private List<Vector2> lastRoute = new List<Vector2>();
 
     private GradingData currentGradingData;
     private GradingData nextGradingData;
 
+    Vector2 originalPosition;
+    Vector2 previousPosition;
+    Vector2 currentPosition;
+	Vector2 previousDelta;
+    Vector2 currentDelta;
 
-    private float lowAngle;
-    private float highAngle;
-    private void Start()
+    Vector2 positionsTotal;
+    float distancesTotal;
+    int distancesCount;
+
+	private void Start()
     {
-        timer = hesitationPeriod;
         pawStartPos = pawPad.position;
         nextGradingData = new GradingData(Camera.main.ScreenToWorldPoint(Input.mousePosition), new List<Vector2>(), Vector2.zero);
         currentGradingData = new GradingData(Camera.main.ScreenToWorldPoint(Input.mousePosition), new List<Vector2>(), Vector2.zero);
     }
+
     void Update()
     {
-        timer -= Time.deltaTime;
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.DrawLine(nextGradingData.start, mousePos, Color.black);
-        nextGradingData.positions.Add(mousePos);
-        nextGradingData.end = mousePos;
-        RenderGradingData(currentGradingData);
-        RenderGradingData(nextGradingData);
-        Debug.Log(Vector2.SignedAngle(new Vector2(0, 1), new Vector2(1, 0)));
-        //Debug.Log(Vector2.Angle(pawPad.position.normalized, (pawPad.position.normalized + Vector2.up)));
-        // Debug.Log(Vector2.Angle((pawPad.position + Vector2.up).normalized, ((Vector2)Input.mousePosition - pawPad.position).normalized));
-        if (timer <= 0)
+        normalHitTimer += Time.deltaTime;
+        bonusHitTimer += Time.deltaTime;
+
+        recordDistanceTimer += Time.deltaTime;
+        if (recordDistanceTimer >= recordDistanceDelay)
         {
-            Debug.Log("bap");
-            targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pawStartPos = pawPad.position;
-            timer = hesitationPeriod;
+			RecordMouseDistances();
+            recordDistanceTimer = 0;
+		}
+
+        if (bonusHitTimer >= bonusHitDelay)
+        {
+            if (CheckIfBonus(out Vector3 position))
+            {
+                //Debug.Log("bonus");
+                Bap(position);
+            }
+            bonusHitTimer = 0;
+        }
+
+		if (normalHitTimer >= normalHitDelay)
+        {
+            Bap(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            
             currentGradingData = nextGradingData;
             nextGradingData = new GradingData(targetPos, new List<Vector2>(), targetPos);
-            posList.Clear();
+
+			normalHitTimer = 0;
         }
+
+		RenderGrading();
+	}
+
+	private void Bap(Vector3 position)
+    {
+		//Debug.Log("bap");
+
+		targetPos = position;
+		pawStartPos = pawPad.position;
+	}
+
+	private void RecordMouseDistances()
+    {
+		currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		currentDelta = currentPosition - previousPosition;
+
+		bool changedDirectionX = currentDelta.x * previousDelta.x < 0;
+		bool changedDirectionY = currentDelta.y * previousDelta.y < 0;
+
+		if (changedDirectionX || changedDirectionY)
+        {
+            positionsTotal += currentPosition;
+			distancesTotal += Vector2.Distance(currentPosition, originalPosition);
+            distancesCount++;
+
+			originalPosition = currentPosition;
+		}
+
+		previousPosition = currentPosition;
+		previousDelta = currentDelta;
+	}
+
+    private bool CheckIfBonus(out Vector3 averagePosition)
+    {
+		averagePosition = positionsTotal / distancesCount;
+
+        float averageDistance = distancesTotal / distancesCount;
+		float chance = Random.Range(0f, 1f) * maxDistance;
+
+		positionsTotal = new Vector2();
+		distancesTotal = 0;
+		distancesCount = 0;
+
+		if (chance < averageDistance)
+        {
+			return true;
+		}
+        return false;
     }
-    private void FixedUpdate()
+
+	private void FixedUpdate()
     {
         Vector2 direction = (targetPos - pawPad.position).normalized;
         float progress = Vector2.Distance(targetPos, pawPad.position) / Vector2.Distance(targetPos, pawStartPos);
@@ -68,6 +141,17 @@ public class PawController : MonoBehaviour
         pawPad.MovePosition(nextPos);
         lineRenderer.SetPositions(new Vector3[] { cat.transform.position, nextPos });
     }
+
+    private void RenderGrading()
+    {
+		Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Debug.DrawLine(nextGradingData.start, mousePos, Color.black);
+		nextGradingData.positions.Add(mousePos);
+		nextGradingData.end = mousePos;
+		RenderGradingData(currentGradingData);
+		RenderGradingData(nextGradingData);
+	}
+
     private void RenderGradingData(GradingData data)
     {
         Debug.DrawLine(data.start, data.end, Color.red);

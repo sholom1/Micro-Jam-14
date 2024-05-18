@@ -20,8 +20,7 @@ public class PawController : MonoBehaviour
     private float timer;
     private Vector2 targetPos;
     private Vector2 pawStartPos;
-    [SerializeField]
-    private float maxPawLength;
+    public float maxPawLength;
     private bool bap = false;
     Vector2 mousePos;
     private void Start()

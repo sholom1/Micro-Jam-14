@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PawController : MonoBehaviour
 {
+    [SerializeField]
+    private AudioPlayer audioPlayer;
 
     [SerializeField]
     private float hesitationPeriod = 0.5f;
@@ -19,10 +21,12 @@ public class PawController : MonoBehaviour
     private float timer;
     private Vector2 targetPos;
     private Vector2 pawStartPos;
+
     private void Start()
     {
         timer = hesitationPeriod;
     }
+
     void Update()
     {
         timer -= Time.deltaTime;

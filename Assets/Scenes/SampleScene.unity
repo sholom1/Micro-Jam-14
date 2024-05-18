@@ -1206,34 +1206,34 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -0.047742877
-      outSlope: -0.047742877
+      inSlope: 5.731474
+      outSlope: 5.731474
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.43885866
+      outWeight: 0.09343733
     - serializedVersion: 3
-      time: 0.45075133
-      value: 0.99788266
-      inSlope: 0.0961768
-      outSlope: 0.0961768
+      time: 0.49558556
+      value: 0.9788754
+      inSlope: -0.49314225
+      outSlope: -0.49314225
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.07095363
-      outWeight: 0.31613508
+      outWeight: 0.12991196
     - serializedVersion: 3
-      time: 0.9972534
-      value: 0.6676254
-      inSlope: 0
-      outSlope: 0
+      time: 0.99993896
+      value: 0.00005340576
+      inSlope: -4.784059
+      outSlope: -4.784059
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.047003202
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  pawSpeedMultiplier: 50
+  pawTravelTime: 0.5
   maxPawLength: 4
 --- !u!212 &1632560234
 SpriteRenderer:
@@ -1322,11 +1322,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hesitationTime: 2
-  jumpForceLeft: {x: -500, y: 500}
-  jumpForceRight: {x: 500, y: 500}
-  jumpForceUp: {x: 0, y: 500}
-  catState: 0
   rigidbody: {fileID: 1632560237}
+  paw: {fileID: 1632560233}
+  maxPawLengthScalarBeforeJump: 1.25
+  jumpForce: 500
 --- !u!50 &1632560237
 Rigidbody2D:
   serializedVersion: 4

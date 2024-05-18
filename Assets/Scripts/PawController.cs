@@ -19,16 +19,12 @@ public class PawController : MonoBehaviour
 
     private float timer;
     private Vector2 targetPos;
-    private Vector2 pawStartPos;
     public float maxPawLength;
     private bool bap = false;
     Vector2 mousePos;
     private void Start()
     {
         timer = hesitationPeriod;
-        float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
-        //maxPawLength = screenWidth * .4f;
-        Debug.Log(screenWidth);
     }
     void Update()
     {
@@ -39,7 +35,6 @@ public class PawController : MonoBehaviour
         {
             Debug.Log("bap");
             targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            pawStartPos = pawPad.position;
             timer = hesitationPeriod;
             bap = true;
         }

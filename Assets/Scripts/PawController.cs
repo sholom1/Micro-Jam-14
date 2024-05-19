@@ -125,7 +125,7 @@ public class PawController : MonoBehaviour
 		}
         return false;
     }
-
+    bool hit = false;
 	private void FixedUpdate()
     {
         if (bap)
@@ -135,8 +135,9 @@ public class PawController : MonoBehaviour
             pawTravelDuration += Time.fixedDeltaTime;
             float pawTravelProgress = Mathf.Clamp01(pawTravelDuration / pawTravelTime);
             pawPad.transform.position = (Vector2)cat.transform.position + direction * pawSpeed.Evaluate(pawTravelProgress) * Mathf.Min(maxPawLength, Vector2.Distance(cat.transform.position, targetPos));
-            if (Vector2.Distance(pawPad.transform.position, targetPos) < 0.1f)
+            if (Vector2.Distance(pawPad.transform.position, targetPos) < 0.1f && !hit)
             {
+                hit = true;
                 audioPlayer.PlayNormalHitSFX();
                 ScoreManager.Instance.AddNormalPoints();
             }
@@ -144,6 +145,7 @@ public class PawController : MonoBehaviour
             {
                 pawTravelDuration = 0;
                 bap = false;
+                hit = false;
             }
         }
         else

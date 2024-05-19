@@ -50,7 +50,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void AddBapAndMovePoints()
     {
-        AddScoreFeedback("Trick Bap", bapPoints);
+        AddScoreFeedback("Trick Bap", bapAndMovePoints);
         AddScore(bapAndMovePoints);
     }
     public void AddHitObjectPoints()

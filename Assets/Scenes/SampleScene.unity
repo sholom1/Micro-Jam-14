@@ -2507,6 +2507,7 @@ MonoBehaviour:
   audioPlayer: {fileID: 1632560240}
   lineRenderer: {fileID: 1079725070}
   pawPad: {fileID: 1250151108}
+  catRigidbody: {fileID: 1632560237}
   cat: {fileID: 1632560232}
   pawSpeed:
     serializedVersion: 2

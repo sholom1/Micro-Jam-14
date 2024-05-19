@@ -64,7 +64,7 @@ public class PawController : MonoBehaviour
         {
             if (CheckIfExtraHit(out Vector3 position))
             {
-                Debug.Log("extra");
+                //Debug.Log("extra");
                 Bap(position);
             }
             extraHitTimer = 0;
@@ -72,7 +72,7 @@ public class PawController : MonoBehaviour
 
 		if (normalHitTimer >= normalHitDelay)
         {
-            Debug.Log("normal");
+            //Debug.Log("normal");
             Bap(mousePos);
 			normalHitTimer = 0;
         }

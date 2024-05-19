@@ -16,9 +16,8 @@ public class PawController : MonoBehaviour
     [SerializeField]
     private AnimationCurve pawSpeed;
     [SerializeField]
-    private float pawSpeedMultiplier;
-    [SerializeField]
-    private float maxDistance;
+    private float pawTravelTime = 0.5f;
+    private float pawTravelDuration = 0;
 
 	[SerializeField]
 	private float normalHitDelay;
@@ -32,7 +31,6 @@ public class PawController : MonoBehaviour
     private float recordDistanceTimer = 0;
 
     private Vector2 targetPos;
-    private Vector2 pawStartPos;
 
     Vector2 originalPosition;
     Vector2 previousPosition;
@@ -44,10 +42,9 @@ public class PawController : MonoBehaviour
     float distancesTotal;
     int distancesCount;
 
-	private void Start()
-    {
-        pawStartPos = pawPad.position;
-    }
+    public float maxPawLength;
+    private bool bap = false;
+    Vector2 mousePos;
 
     void Update()
     {
@@ -55,6 +52,8 @@ public class PawController : MonoBehaviour
         extraHitTimer += Time.deltaTime;
 
         recordDistanceTimer += Time.deltaTime;
+
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (recordDistanceTimer >= recordDistanceDelay)
         {
 			RecordMouseDistances();
@@ -65,6 +64,7 @@ public class PawController : MonoBehaviour
         {
             if (CheckIfExtraHit(out Vector3 position))
             {
+                Debug.Log("extra");
                 Bap(position);
             }
             extraHitTimer = 0;
@@ -72,17 +72,19 @@ public class PawController : MonoBehaviour
 
 		if (normalHitTimer >= normalHitDelay)
         {
-            Bap(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Debug.Log("normal");
+            Bap(mousePos);
 			normalHitTimer = 0;
         }
 	}
 
 	private void Bap(Vector3 position)
     {
-		targetPos = position;
-		pawStartPos = pawPad.position;
-
-        audioPlayer.PlayNormalHitSFX();
+        if (Vector2.Distance(transform.position, position) < maxPawLength)
+        {
+            targetPos = position;
+            bap = true;
+        }
 	}
 
 	private void RecordMouseDistances()
@@ -111,7 +113,7 @@ public class PawController : MonoBehaviour
 		averagePosition = positionsTotal / distancesCount;
 
         float averageDistance = distancesTotal / distancesCount;
-		float chance = Random.Range(0f, 1f) * maxDistance;
+		float chance = Random.Range(0f, 1f) * maxPawLength;
 
 		positionsTotal = new Vector2();
 		distancesTotal = 0;
@@ -123,13 +125,33 @@ public class PawController : MonoBehaviour
 		}
         return false;
     }
-
+    bool hit = false;
 	private void FixedUpdate()
     {
-        Vector2 direction = (targetPos - pawPad.position).normalized;
-        float progress = Vector2.Distance(targetPos, pawPad.position) / Vector2.Distance(targetPos, pawStartPos);
-        Vector2 nextPos = pawPad.position + direction * pawSpeed.Evaluate(progress) * pawSpeedMultiplier * Time.fixedDeltaTime;
-        pawPad.MovePosition(nextPos);
-        lineRenderer.SetPositions(new Vector3[] { cat.transform.position, nextPos });
+        if (bap)
+        {
+            if (targetPos != mousePos) targetPos = mousePos;
+            Vector2 direction = (targetPos - (Vector2)cat.transform.position).normalized;
+            pawTravelDuration += Time.fixedDeltaTime;
+            float pawTravelProgress = Mathf.Clamp01(pawTravelDuration / pawTravelTime);
+            pawPad.transform.position = (Vector2)cat.transform.position + direction * pawSpeed.Evaluate(pawTravelProgress) * Mathf.Min(maxPawLength, Vector2.Distance(cat.transform.position, targetPos));
+            if (Vector2.Distance(pawPad.transform.position, targetPos) < 0.1f && !hit)
+            {
+                hit = true;
+                audioPlayer.PlayNormalHitSFX();
+                ScoreManager.Instance.AddNormalPoints();
+            }
+            if (pawTravelProgress == 1)
+            {
+                pawTravelDuration = 0;
+                bap = false;
+                hit = false;
+            }
+        }
+        else
+        {
+            pawPad.position = cat.transform.position;
+        }
+        lineRenderer.SetPositions(new Vector3[] { cat.transform.position, pawPad.transform.position });
     }
 }

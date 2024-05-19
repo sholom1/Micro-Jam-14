@@ -12,8 +12,8 @@ public class Destructable : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.relativeVelocity.magnitude);
-        Debug.Log(collision.collider.tag);
+        //Debug.Log(collision.relativeVelocity.magnitude);
+        //Debug.Log(collision.collider.tag);
         if (collision.relativeVelocity.magnitude > smashThreshold || smashIfHitFloor && collision.collider.CompareTag("Floor"))
         {
             isBroken = true;

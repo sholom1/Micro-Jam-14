@@ -42,14 +42,9 @@ public class PawController : MonoBehaviour
     float distancesTotal;
     int distancesCount;
 
-	private void Start()
     public float maxPawLength;
     private bool bap = false;
     Vector2 mousePos;
-    private void Start()
-    {
-        timer = hesitationPeriod;
-    }
 
     void Update()
     {
@@ -57,6 +52,8 @@ public class PawController : MonoBehaviour
         extraHitTimer += Time.deltaTime;
 
         recordDistanceTimer += Time.deltaTime;
+
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (recordDistanceTimer >= recordDistanceDelay)
         {
 			RecordMouseDistances();
@@ -67,6 +64,7 @@ public class PawController : MonoBehaviour
         {
             if (CheckIfExtraHit(out Vector3 position))
             {
+                Debug.Log("extra");
                 Bap(position);
             }
             extraHitTimer = 0;
@@ -74,7 +72,8 @@ public class PawController : MonoBehaviour
 
 		if (normalHitTimer >= normalHitDelay)
         {
-            Bap(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            Debug.Log("normal");
+            Bap(mousePos);
 			normalHitTimer = 0;
         }
 	}
@@ -84,9 +83,7 @@ public class PawController : MonoBehaviour
         if (Vector2.Distance(transform.position, position) < maxPawLength)
         {
             targetPos = position;
-            pawStartPos = pawPad.position;
-
-            audioPlayer.PlayNormalHitSFX();
+            bap = true;
         }
 	}
 
@@ -116,7 +113,7 @@ public class PawController : MonoBehaviour
 		averagePosition = positionsTotal / distancesCount;
 
         float averageDistance = distancesTotal / distancesCount;
-		float chance = Random.Range(0f, 1f) * maxDistance;
+		float chance = Random.Range(0f, 1f) * maxPawLength;
 
 		positionsTotal = new Vector2();
 		distancesTotal = 0;
@@ -138,6 +135,11 @@ public class PawController : MonoBehaviour
             pawTravelDuration += Time.fixedDeltaTime;
             float pawTravelProgress = Mathf.Clamp01(pawTravelDuration / pawTravelTime);
             pawPad.transform.position = (Vector2)cat.transform.position + direction * pawSpeed.Evaluate(pawTravelProgress) * Mathf.Min(maxPawLength, Vector2.Distance(cat.transform.position, targetPos));
+            if (Vector2.Distance(pawPad.transform.position, targetPos) < 0.1f)
+            {
+                audioPlayer.PlayNormalHitSFX();
+                ScoreManager.Instance.AddNormalPoints();
+            }
             if (pawTravelProgress == 1)
             {
                 pawTravelDuration = 0;

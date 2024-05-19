@@ -3503,6 +3503,9 @@ MonoBehaviour:
   normalHitAudioClips:
   - {fileID: 8300000, guid: 7287a0c6b8c05472d8f6c075d56ba96d, type: 3}
   - {fileID: 8300000, guid: bcd16fa40752a4fe7b6f657eb958171e, type: 3}
+  - {fileID: 8300000, guid: 63ebfd5155eb14bf3a98d5808b581592, type: 3}
+  - {fileID: 8300000, guid: 9beeec9e9b9f74474bc9aa4174e5966b, type: 3}
+  - {fileID: 8300000, guid: ee5afd3b8a1084394b7c26773bc2ca65, type: 3}
   bonusHitAudioClip: {fileID: 8300000, guid: 217465c1f57f24f108a2db1b067bc6a5, type: 3}
   audioSource: {fileID: 1632560239}
 --- !u!1 &1641217931

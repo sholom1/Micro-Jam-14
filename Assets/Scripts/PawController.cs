@@ -39,7 +39,9 @@ public class PawController : MonoBehaviour
     Vector2 currentDelta;
 
     Vector2 positionsTotal;
+    [SerializeField]
     float distancesTotal;
+    [SerializeField]
     int distancesCount;
 
     public float maxPawLength;
@@ -139,7 +141,7 @@ public class PawController : MonoBehaviour
             {
                 hit = true;
                 audioPlayer.PlayNormalHitSFX();
-                ScoreManager.Instance.AddNormalPoints();
+                ScoreManager.Instance.AddBapPoints();
             }
             if (pawTravelProgress == 1)
             {

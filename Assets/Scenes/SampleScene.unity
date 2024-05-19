@@ -812,9 +812,13 @@ MonoBehaviour:
   inputField: {fileID: 465486709}
   ScoreScrollView: {fileID: 465486706}
   ScoreContainer: {fileID: 465486708}
+  feedbackContainer: {fileID: 1135874635}
+  feedbackPrefab: {fileID: 1928258497706299437, guid: b1bea39eb444ca44c9faedfd79024a5c, type: 3}
   prefab: {fileID: 158749681956330930, guid: 53458be28038d7c449f0d77e2049f780, type: 3}
-  normalPoints: 10
-  bonusPoints: 20
+  bapPoints: 10
+  bapAndMovePoints: 20
+  hitObjectPoints: 5
+  smashObjectPoints: 100
   ScoreWindow: {fileID: 465486704}
 --- !u!1001 &465486703
 PrefabInstance:
@@ -1874,6 +1878,83 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1135874635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1135874636}
+  - component: {fileID: 1135874638}
+  - component: {fileID: 1135874637}
+  m_Layer: 5
+  m_Name: Score Feedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1135874636
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135874635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1210305748}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 60.0702, y: -53.94387}
+  m_SizeDelta: {x: 79.7785, y: 74.1878}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1135874637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135874635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 5}
+--- !u!114 &1135874638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135874635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 1
 --- !u!1 &1210305747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1906,6 +1987,7 @@ RectTransform:
   m_Children:
   - {fileID: 1930954218}
   - {fileID: 1046062414}
+  - {fileID: 1135874636}
   m_Father: {fileID: 403879374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -2463,6 +2545,8 @@ MonoBehaviour:
   normalHitDelay: 2
   extraHitDelay: 0.5
   recordDistanceDelay: 0.1
+  distancesTotal: 0
+  distancesCount: 0
   maxPawLength: 4
 --- !u!212 &1632560234
 SpriteRenderer:
@@ -2528,7 +2612,7 @@ Transform:
   m_GameObject: {fileID: 1632560232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.39, y: -4.11, z: 0}
+  m_LocalPosition: {x: -8.006, y: -4.014, z: 0}
   m_LocalScale: {x: 2.6705, y: 2.6705, z: 2.6705}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2555,6 +2639,7 @@ MonoBehaviour:
   paw: {fileID: 1632560233}
   maxPawLengthScalarBeforeJump: 1.25
   jumpForce: 2000
+  isGrounded: 0
 --- !u!50 &1632560237
 Rigidbody2D:
   serializedVersion: 4

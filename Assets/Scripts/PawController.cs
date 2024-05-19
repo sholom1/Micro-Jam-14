@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class PawController : MonoBehaviour
 {
     [SerializeField]
+    private AudioPlayer audioPlayer;
+
+    [SerializeField]
     private LineRenderer lineRenderer;
     [SerializeField]
     private Rigidbody2D pawPad;
@@ -78,6 +81,8 @@ public class PawController : MonoBehaviour
     {
 		targetPos = position;
 		pawStartPos = pawPad.position;
+
+        audioPlayer.PlayNormalHitSFX();
 	}
 
 	private void RecordMouseDistances()

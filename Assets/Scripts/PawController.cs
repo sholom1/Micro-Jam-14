@@ -20,19 +20,16 @@ public class PawController : MonoBehaviour
 	[SerializeField]
 	private float normalHitDelay;
 	[SerializeField]
-	private float bonusHitDelay;
+	private float extraHitDelay;
 	[SerializeField]
     private float recordDistanceDelay;
 
     private float normalHitTimer = 0;
-    private float bonusHitTimer = 0;
+    private float extraHitTimer = 0;
     private float recordDistanceTimer = 0;
 
     private Vector2 targetPos;
     private Vector2 pawStartPos;
-
-    private GradingData currentGradingData;
-    private GradingData nextGradingData;
 
     Vector2 originalPosition;
     Vector2 previousPosition;
@@ -47,14 +44,12 @@ public class PawController : MonoBehaviour
 	private void Start()
     {
         pawStartPos = pawPad.position;
-        nextGradingData = new GradingData(Camera.main.ScreenToWorldPoint(Input.mousePosition), new List<Vector2>(), Vector2.zero);
-        currentGradingData = new GradingData(Camera.main.ScreenToWorldPoint(Input.mousePosition), new List<Vector2>(), Vector2.zero);
     }
 
     void Update()
     {
         normalHitTimer += Time.deltaTime;
-        bonusHitTimer += Time.deltaTime;
+        extraHitTimer += Time.deltaTime;
 
         recordDistanceTimer += Time.deltaTime;
         if (recordDistanceTimer >= recordDistanceDelay)
@@ -63,33 +58,24 @@ public class PawController : MonoBehaviour
             recordDistanceTimer = 0;
 		}
 
-        if (bonusHitTimer >= bonusHitDelay)
+        if (extraHitTimer >= extraHitDelay)
         {
-            if (CheckIfBonus(out Vector3 position))
+            if (CheckIfExtraHit(out Vector3 position))
             {
-                //Debug.Log("bonus");
                 Bap(position);
             }
-            bonusHitTimer = 0;
+            extraHitTimer = 0;
         }
 
 		if (normalHitTimer >= normalHitDelay)
         {
             Bap(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            
-            currentGradingData = nextGradingData;
-            nextGradingData = new GradingData(targetPos, new List<Vector2>(), targetPos);
-
 			normalHitTimer = 0;
         }
-
-		RenderGrading();
 	}
 
 	private void Bap(Vector3 position)
     {
-		//Debug.Log("bap");
-
 		targetPos = position;
 		pawStartPos = pawPad.position;
 	}
@@ -115,7 +101,7 @@ public class PawController : MonoBehaviour
 		previousDelta = currentDelta;
 	}
 
-    private bool CheckIfBonus(out Vector3 averagePosition)
+    private bool CheckIfExtraHit(out Vector3 averagePosition)
     {
 		averagePosition = positionsTotal / distancesCount;
 
@@ -140,26 +126,5 @@ public class PawController : MonoBehaviour
         Vector2 nextPos = pawPad.position + direction * pawSpeed.Evaluate(progress) * pawSpeedMultiplier * Time.fixedDeltaTime;
         pawPad.MovePosition(nextPos);
         lineRenderer.SetPositions(new Vector3[] { cat.transform.position, nextPos });
-    }
-
-    private void RenderGrading()
-    {
-		Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		Debug.DrawLine(nextGradingData.start, mousePos, Color.black);
-		nextGradingData.positions.Add(mousePos);
-		nextGradingData.end = mousePos;
-		RenderGradingData(currentGradingData);
-		RenderGradingData(nextGradingData);
-	}
-
-    private void RenderGradingData(GradingData data)
-    {
-        Debug.DrawLine(data.start, data.end, Color.red);
-        Vector2 lastPos = pawStartPos;
-        foreach (Vector2 pos in data.positions)
-        {
-            Debug.DrawLine(lastPos, pos, Color.green);
-            lastPos = pos;
-        }
     }
 }

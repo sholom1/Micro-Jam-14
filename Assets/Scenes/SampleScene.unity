@@ -1218,6 +1218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a524b9d0c505946be23196526ba4b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPlayer: {fileID: 1632560237}
   lineRenderer: {fileID: 1079725070}
   pawPad: {fileID: 1250151108}
   cat: {fileID: 1632560232}
@@ -1256,8 +1257,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   pawSpeedMultiplier: 50
   maxDistance: 20
-  normalHitDelay: 1
-  bonusHitDelay: 0.25
+  normalHitDelay: 2
+  extraHitDelay: 0.25
   recordDistanceDelay: 0.1
 --- !u!212 &1632560234
 SpriteRenderer:

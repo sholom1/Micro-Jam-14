@@ -81,6 +81,8 @@ public class PawController : MonoBehaviour
     {
 		targetPos = position;
 		pawStartPos = pawPad.position;
+
+        audioPlayer.PlayNormalHitSFX();
 	}
 
 	private void RecordMouseDistances()

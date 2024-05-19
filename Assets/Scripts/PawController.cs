@@ -48,7 +48,6 @@ public class PawController : MonoBehaviour
             pawTravelDuration += Time.fixedDeltaTime;
             float pawTravelProgress = Mathf.Clamp01(pawTravelDuration / pawTravelTime);
             pawPad.transform.position = (Vector2)cat.transform.position + direction * pawSpeed.Evaluate(pawTravelProgress) * Mathf.Min(maxPawLength, Vector2.Distance(cat.transform.position, targetPos));
-            lineRenderer.SetPositions(new Vector3[] { cat.transform.position, pawPad.transform.position });
             if (pawTravelProgress == 1)
             {
                 pawTravelDuration = 0;
@@ -58,7 +57,7 @@ public class PawController : MonoBehaviour
         else
         {
             pawPad.position = cat.transform.position;
-            lineRenderer.SetPositions(new Vector3[] { cat.transform.position, pawPad.transform.position });
         }
+        lineRenderer.SetPositions(new Vector3[] { cat.transform.position, pawPad.transform.position });
     }
 }

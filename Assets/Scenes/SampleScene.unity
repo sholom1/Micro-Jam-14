@@ -784,7 +784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &403879371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1572,6 +1572,7 @@ GameObject:
   - component: {fileID: 537048948}
   - component: {fileID: 537048947}
   - component: {fileID: 537048946}
+  - component: {fileID: 537048949}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1680,6 +1681,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 537048949}
+        m_TargetAssemblyTypeName: CustomCursor, Assembly-CSharp
+        m_MethodName: setCursor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &537048947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,6 +1731,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537048944}
   m_CullTransparentMesh: 1
+--- !u!114 &537048949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537048944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff45d7e152dd2c94e886b2740cfbdf99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 2800000, guid: 95f44f6b81068f34db0e1e4d7e31a6cd, type: 3}
 --- !u!1 &581302170
 GameObject:
   m_ObjectHideFlags: 0
@@ -4531,7 +4557,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1426381129319918562, guid: cba5962eb2ab24e10bf215738397be8b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 172.51001
       objectReference: {fileID: 0}
     - target: {fileID: 2085476278894172316, guid: cba5962eb2ab24e10bf215738397be8b, type: 3}
       propertyPath: m_Name
@@ -4551,7 +4577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2478154958508694625, guid: cba5962eb2ab24e10bf215738397be8b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 31.26
       objectReference: {fileID: 0}
     - target: {fileID: 2478154958508694625, guid: cba5962eb2ab24e10bf215738397be8b, type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fc1f1b242f9f3432db68baa490b8a16b
+guid: c279b66aa2a80439ab9001af3b688182
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -238506396363105701
-    second: meter_0
+      213: -9197601209572012561
+    second: basketball_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: meter_0
+      name: basketball_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 2
-        width: 265
-        height: 72
+        x: 13
+        y: 6
+        width: 131
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5a5e1832b7a0bcf0800000000000000
-      internalID: -238506396363105701
+      spriteID: fedc1cd4e6e8b5080800000000000000
+      internalID: -9197601209572012561
       vertices: []
       indices: 
       edges: []
@@ -146,7 +146,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      meter_0: -238506396363105701
+      basketball_0: -9197601209572012561
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

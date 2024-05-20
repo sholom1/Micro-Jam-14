@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: fc1f1b242f9f3432db68baa490b8a16b
+guid: 371ef3b6d38b9461ba5b7b0122ec3926
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -238506396363105701
-    second: meter_0
+      213: -1982724408127846531
+    second: curtains_D_0
+  - first:
+      213: 1379965092177193799
+    second: curtains_D_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: meter_0
+      name: curtains_D_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 2
-        width: 265
-        height: 72
+        x: 20
+        y: 14
+        width: 280
+        height: 444
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5a5e1832b7a0bcf0800000000000000
-      internalID: -238506396363105701
+      spriteID: d770b0ed7a2fb74e0800000000000000
+      internalID: -1982724408127846531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: curtains_D_1
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 248
+        width: 188
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74b29a1a0fe962310800000000000000
+      internalID: 1379965092177193799
       vertices: []
       indices: 
       edges: []
@@ -146,7 +171,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      meter_0: -238506396363105701
+      curtains_D_0: -1982724408127846531
+      curtains_D_1: 1379965092177193799
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,6 +12,8 @@ public class PawController : MonoBehaviour
     [SerializeField]
     private Rigidbody2D pawPad;
     [SerializeField]
+    private Rigidbody2D catRigidbody;
+    [SerializeField]
     private GameObject cat;
     [SerializeField]
     private AnimationCurve pawSpeed;
@@ -39,7 +41,9 @@ public class PawController : MonoBehaviour
     Vector2 currentDelta;
 
     Vector2 positionsTotal;
+    [SerializeField]
     float distancesTotal;
+    [SerializeField]
     int distancesCount;
 
     public float maxPawLength;
@@ -139,7 +143,8 @@ public class PawController : MonoBehaviour
             {
                 hit = true;
                 audioPlayer.PlayNormalHitSFX();
-                ScoreManager.Instance.AddNormalPoints();
+                if (catRigidbody.velocity.magnitude > 5) ScoreManager.Instance.AddBapAndMovePoints(); 
+                else ScoreManager.Instance.AddBapPoints();
             }
             if (pawTravelProgress == 1)
             {

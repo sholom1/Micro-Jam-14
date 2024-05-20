@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fa4d3068216fc2648b842ab28c7470f4
+guid: 17da0b871a9c84e4dbc1fd3ce2e60d79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3087020746046724720
-    second: piggy_0
+      213: 7764618412105300388
+    second: mirror_D_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: piggy_0
+      name: mirror_D_0
       rect:
         serializedVersion: 2
-        x: 24
-        y: 22
-        width: 175
-        height: 109
+        x: 54
+        y: 20
+        width: 91
+        height: 99
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 07a5066430d47da20800000000000000
-      internalID: 3087020746046724720
+      spriteID: 4a97efd9e4771cb60800000000000000
+      internalID: 7764618412105300388
       vertices: []
       indices: 
       edges: []
@@ -159,7 +159,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      piggy_0: 3087020746046724720
+      mirror_D_0: 7764618412105300388
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

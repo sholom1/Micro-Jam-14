@@ -157,6 +157,9 @@ public class PawController : MonoBehaviour
         {
             pawPad.position = cat.transform.position;
         }
-        lineRenderer.SetPositions(new Vector3[] { cat.transform.position, pawPad.transform.position });
+        Vector2 dirToPawPad = (pawPad.transform.position - cat.transform.position).normalized * 0.25f;
+        float rot_z = Mathf.Atan2(dirToPawPad.y, dirToPawPad.x) * Mathf.Rad2Deg;
+        pawPad.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+        lineRenderer.SetPositions(new Vector3[] { cat.transform.position, (Vector2)pawPad.transform.position});
     }
 }

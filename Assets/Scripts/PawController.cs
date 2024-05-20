@@ -41,8 +41,7 @@ public class PawController : MonoBehaviour
     Vector2 currentDelta;
 
     Vector2 positionsTotal;
-    [SerializeField]
-    float distancesTotal;
+    public float distancesTotal;
     [SerializeField]
     int distancesCount;
 

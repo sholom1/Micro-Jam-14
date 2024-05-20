@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4925814905453001877}
   - component: {fileID: 7541453436593992490}
   - component: {fileID: 2213904716603946186}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Curtains
   m_TagString: Untagged
   m_Icon: {fileID: 0}

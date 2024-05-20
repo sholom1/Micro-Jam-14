@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 26a4f3c53497b79418920fc6436b1f65
+guid: d46a22927990347b987a1c62c6cf0a99
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 313046362853638240
-    second: books_D_0
+      213: -7260884209373572048
+    second: photo_D_0
   - first:
-      213: -6545098275175693325
-    second: books_D_1
+      213: 3338581344838659081
+    second: photo_D_1
   - first:
-      213: -8297513178100867630
-    second: books_D_2
+      213: -4060051674079728148
+    second: photo_D_2
   - first:
-      213: 3383447567559957776
-    second: books_D_3
+      213: -7657926739857468945
+    second: photo_D_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,19 +81,6 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Win64
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -135,13 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: books_D_0
+      name: photo_D_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 6
-        width: 136
-        height: 53
+        x: 22
+        y: 65
+        width: 19
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0608e18220a285400800000000000000
-      internalID: 313046362853638240
+      spriteID: 0349b0908482c3b90800000000000000
+      internalID: -7260884209373572048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: books_D_1
+      name: photo_D_1
       rect:
         serializedVersion: 2
-        x: 81
-        y: 59
-        width: 55
-        height: 48
+        x: 60
+        y: 54
+        width: 123
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f38120dbc32b25a0800000000000000
-      internalID: -6545098275175693325
+      spriteID: 90caad86b06055e20800000000000000
+      internalID: 3338581344838659081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: books_D_2
+      name: photo_D_2
       rect:
         serializedVersion: 2
-        x: 161
-        y: 31
-        width: 81
-        height: 65
+        x: 196
+        y: 65
+        width: 26
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2dddc240abf49dc80800000000000000
-      internalID: -8297513178100867630
+      spriteID: ced6fb4738cc7a7c0800000000000000
+      internalID: -4060051674079728148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: books_D_3
+      name: photo_D_3
       rect:
         serializedVersion: 2
-        x: 202
-        y: 1
-        width: 113
-        height: 60
+        x: 158
+        y: 25
+        width: 23
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 01d129ce2ab64fe20800000000000000
-      internalID: 3383447567559957776
+      spriteID: fe194da143499b590800000000000000
+      internalID: -7657926739857468945
       vertices: []
       indices: 
       edges: []
@@ -226,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -234,10 +221,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      books_D_0: 313046362853638240
-      books_D_1: -6545098275175693325
-      books_D_2: -8297513178100867630
-      books_D_3: 3383447567559957776
+      photo_D_0: -7260884209373572048
+      photo_D_1: 3338581344838659081
+      photo_D_2: -4060051674079728148
+      photo_D_3: -7657926739857468945
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -383,7 +383,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      piggy_D_0: 2956919623520134345
+      piggy_D_1: 9146723507946810255
+      piggy_D_2: -8346596818522418980
+      piggy_D_3: -2868633294037336711
+      piggy_D_4: 3991457114140104637
+      piggy_D_5: -8576805558743882377
+      piggy_D_6: -1220145975267435967
+      piggy_D_7: -3414862929661851823
+      piggy_D_8: -4347832360152132044
+      piggy_D_9: -3493802580553787660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

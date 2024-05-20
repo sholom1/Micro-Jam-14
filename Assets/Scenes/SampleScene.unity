@@ -1545,6 +1545,10 @@ PrefabInstance:
       propertyPath: onBroken.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 6629302294523816174}
+    - target: {fileID: 1597716528428620380, guid: 2532a5e7fbc3f004783ba0aab71aada5, type: 3}
+      propertyPath: onBroken.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 9174098949187601900, guid: b098b993cb2b548c6b75a9a31fdebe0c, type: 3}
     - target: {fileID: 7846027427091004812, guid: 2532a5e7fbc3f004783ba0aab71aada5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.107
@@ -2418,7 +2422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1089939285
 Transform:
   m_ObjectHideFlags: 0
@@ -2643,7 +2647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250832c19beae6d4a81438b85dc05dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smashThreshold: 3
+  smashThreshold: 10000
   smashIfHitFloor: 0
   onBroken:
     m_PersistentCalls:
@@ -2765,7 +2769,7 @@ HingeJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: 20
+  m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
@@ -2862,6 +2866,10 @@ PrefabInstance:
       propertyPath: onBroken.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 6629302294523816174}
+    - target: {fileID: 4875967820026679388, guid: b3d0f7d1203c3c84e8dc42a382f7fd45, type: 3}
+      propertyPath: onBroken.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5805001543815391410, guid: 518a1669c95974c08909646265a371de, type: 3}
     - target: {fileID: 8802544037323376278, guid: b3d0f7d1203c3c84e8dc42a382f7fd45, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.78

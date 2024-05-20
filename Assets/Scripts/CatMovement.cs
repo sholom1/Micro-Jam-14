@@ -15,6 +15,8 @@ public class CatMovement : MonoBehaviour
 
     private float timer;
 
+    public bool isGrounded;
+
     // Update is called once per frame
     void Update()
     {
@@ -30,5 +32,10 @@ public class CatMovement : MonoBehaviour
                 timer = hesitationTime;
             }
         }
+    }
+    private void FixedUpdate()
+    {
+        //Physics2D.Raycast(transform.position - )
+        Debug.Log(rigidbody.velocity.magnitude);
     }
 }

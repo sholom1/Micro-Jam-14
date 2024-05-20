@@ -21,14 +21,20 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private TMP_InputField inputField;
     [SerializeField]
-    private GameObject ScoreScrollView, ScoreContainer;
+    private GameObject ScoreScrollView, ScoreContainer, feedbackContainer;
+    [SerializeField]
+    private PointsFeedback feedbackPrefab;
     [SerializeField]
     private ScoreText prefab;
 
     [SerializeField]
-    private int normalPoints;
+    private int bapPoints;
     [SerializeField]
-    private int bonusPoints;
+    private int bapAndMovePoints;
+    [SerializeField]
+    private int hitObjectPoints;
+    [SerializeField]
+    private int smashObjectPoints;
 
     public GameObject ScoreWindow;
     private bool isGameOver;
@@ -37,13 +43,32 @@ public class ScoreManager : MonoBehaviour
     {
         isGameOver = true;
     }
-    public void AddNormalPoints()
+    public void AddBapPoints()
     {
-        AddScore(normalPoints);
+        AddScoreFeedback("Bap", bapPoints);
+        AddScore(bapPoints);
     }
-    public void AddBonusPoints()
+    public void AddBapAndMovePoints()
     {
-        AddScore(bonusPoints);
+        AddScoreFeedback("Trick Bap", bapAndMovePoints);
+        AddScore(bapAndMovePoints);
+    }
+    public void AddHitObjectPoints()
+    {
+        AddScoreFeedback("Nudge", hitObjectPoints);
+        AddScore(hitObjectPoints);
+    }
+    public void AddSmashObjectPoints()
+    {
+        AddScoreFeedback("Smash", smashObjectPoints);
+        AddScore(smashObjectPoints);
+    }
+    public void AddScoreFeedback(string name, int value)
+    {
+        if (isGameOver) return;
+        PointsFeedback newEntry = Instantiate(feedbackPrefab, feedbackContainer.transform);
+        newEntry.nameText.text = name;
+        newEntry.valueText.text = $"+{value}";
     }
     public void AddScore(int amount)
     {
@@ -155,4 +180,3 @@ public class ScoreData
     public string playerName;
     public int score;
 }
-

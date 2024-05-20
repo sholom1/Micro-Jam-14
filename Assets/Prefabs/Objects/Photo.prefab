@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250832c19beae6d4a81438b85dc05dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smashThreshold: 10
+  smashThreshold: 4
   smashIfHitFloor: 1
   onBroken:
     m_PersistentCalls:

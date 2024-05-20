@@ -14,10 +14,15 @@ public class Destructable : MonoBehaviour
     {
         //Debug.Log(collision.relativeVelocity.magnitude);
         //Debug.Log(collision.collider.tag);
-        if (collision.relativeVelocity.magnitude > smashThreshold || smashIfHitFloor && collision.collider.CompareTag("Floor"))
+        if (!isBroken && (collision.relativeVelocity.magnitude > smashThreshold || smashIfHitFloor && collision.collider.CompareTag("Floor")))
         {
             isBroken = true;
+            ScoreManager.Instance.AddSmashObjectPoints();
             onBroken.Invoke();
+        }
+        if (collision.collider.CompareTag("Paw") && !isBroken)
+        {
+            ScoreManager.Instance.AddHitObjectPoints();
         }
     }
 }
